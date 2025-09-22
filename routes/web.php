@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/rahasia', function () {return "Rahasia bossku";})
+    ->middleware(['auth', 'verified', 'RoleCheck:admin'])
+    ->name('dashboard');
+    Route::get('/product/{id}',  [ProductController::class, 'index'])
+    ->middleware(['auth', 'verified', 'RoleCheck:admin,owner'])
+    ->name('product');
 });
 
 require __DIR__.'/auth.php';
