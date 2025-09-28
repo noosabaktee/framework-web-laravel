@@ -5,15 +5,14 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class Barang extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index($id)
+    public function index()
     {
-        $number = $id + 10; // bebas mau ditambah berapa pun
-        return view('products.index', ['number' => $number]);
+        //
     }
 
     /**
@@ -35,13 +34,9 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $nama)
+    public function show(string $id)
     {
-        return view('product', [
-            "nama" => $nama, 
-            "alertMessage" => "Sukses Masbro!", 
-            "alertType" => "success"
-        ]);
+        return view('barang', ['isi_data' => $id]);
     }
 
     /**

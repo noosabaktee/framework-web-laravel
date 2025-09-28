@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Barang;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
@@ -34,5 +35,8 @@ Route::middleware('auth')->group(function () {
     ->middleware(['auth', 'verified', 'RoleCheck:admin,owner'])
     ->name('product');
 });
+
+Route::get('/produk/{nama}',  [ProductController::class, 'show']);
+Route::get('/route_count/{id}', [Barang::class,'show']);
 
 require __DIR__.'/auth.php';
