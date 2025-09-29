@@ -38,5 +38,6 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/produk/{nama}',  [ProductController::class, 'show']);
 Route::get('/route_count/{id}', [Barang::class,'show']);
+Route::get('/uts', [UtsController::class,'index'])->name('uts');
 
 require __DIR__.'/auth.php';
