@@ -14,6 +14,14 @@ class UtsController extends Controller
     {
         return view('uts.index');
     }
+    public function web()
+    {
+        return view('uts.web');
+    }
+    public function database()
+    {
+        return view('uts.database');
+    }
 
     /**
      * Show the form for creating a new resource.

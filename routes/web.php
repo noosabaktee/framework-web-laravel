@@ -40,5 +40,7 @@ Route::middleware('auth')->group(function () {
 Route::get('/produk/{nama}',  [ProductController::class, 'show']);
 Route::get('/route_count/{id}', [Barang::class,'show']);
 Route::get('/uts', [UtsController::class,'index'])->name('uts');
+Route::get('/uts/web', [UtsController::class,'web'])->name('uts-web');
+Route::get('/uts/database', [UtsController::class,'database'])->name('uts-database');
 
 require __DIR__.'/auth.php';
