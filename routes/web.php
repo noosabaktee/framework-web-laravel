@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Barang;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UtsController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 
