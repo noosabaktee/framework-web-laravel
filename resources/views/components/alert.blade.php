@@ -1,4 +1,7 @@
-<div class="alert alert-{{$type}}">
+{{-- <div class="alert alert-{{$type}}">
     {{$message}}
     <!-- Life is available only in the present moment. - Thich Nhat Hanh -->
-</div>
+</div> --}}
+@props(['type' => 'info'])
+
+<div {{ $attributes->merge(['class' => "alert alert-$type"]) }}> {{ $slot }} </div>

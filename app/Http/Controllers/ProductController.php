@@ -35,12 +35,20 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $nama)
+    public function show(string $nilai)
     {
+        $alertMessage;
+        $alertType;
+        if($nilai % 2 == 0){
+            $alertMessage = "Nilai ini adalah genap";
+            $alertType = "success";
+        }else{
+            $alertMessage = "Nilai ini adalah ganjil"; 
+            $alertType = "warning";
+        }
         return view('product', [
-            "nama" => $nama, 
-            "alertMessage" => "Sukses Masbro!", 
-            "alertType" => "success"
+            "alertMessage" => $alertMessage, 
+            "alertType" => $alertType
         ]);
     }
 

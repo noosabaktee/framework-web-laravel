@@ -11,10 +11,9 @@ class Alert extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct($type, $message)
+    public function __construct()
     {
-        $this->type = $type;
-        $this->message = $message;
+        
     }
 
     /**
@@ -22,6 +21,6 @@ class Alert extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.alert', ['type' => $this->type, 'message' => $this->message]);
+        return view('components.alert');
     }
 }
