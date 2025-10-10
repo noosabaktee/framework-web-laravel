@@ -32,9 +32,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/rahasia', function () {return "Rahasia bossku";})
     ->middleware(['auth', 'verified', 'RoleCheck:admin'])
     ->name('dashboard');
-    Route::get('/product/{id}',  [ProductController::class, 'index'])
-    ->middleware(['auth', 'verified', 'RoleCheck:admin,owner'])
-    ->name('product');
+    // Route::get('/product/{id}',  [ProductController::class, 'index'])
+    // ->middleware(['auth', 'verified', 'RoleCheck:admin,owner'])
+    // ->name('product');
 });
 
 Route::get('/produk/{nilai}',  [ProductController::class, 'show']);
@@ -42,5 +42,8 @@ Route::get('/route_count/{id}', [Barang::class,'show']);
 Route::get('/uts', [UtsController::class,'index'])->name('uts');
 Route::get('/uts/web', [UtsController::class,'web'])->name('uts-web');
 Route::get('/uts/database', [UtsController::class,'database'])->name('uts-database');
+
+Route::get('/product/create', [ProductController::class, 'create'])->name('product-create');
+Route::post('/product', [ProductController::class, 'store'])->name('product-store');
 
 require __DIR__.'/auth.php';

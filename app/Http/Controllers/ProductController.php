@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class ProductController extends Controller
 {
@@ -21,7 +22,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('master-data.product-master.create-product');
     }
 
     /**
@@ -29,7 +30,20 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // validasi input data
+        $validasi_data = $request->validate([
+            'product_name' => 'required|string|max:255',
+            'unit'         => 'required|string|max:50',
+            'type'         => 'required|string|max:50',
+            'information'  => 'nullable|string',
+            'qty'          => 'required|integer',
+            'producer'     => 'required|string|max:255',
+        ]);
+
+        // Proses simpan data kedalam database
+        Product::create($validasi_data);
+
+        return redirect()->back()->with('success', 'Product created successfully!');
     }
 
     /**
